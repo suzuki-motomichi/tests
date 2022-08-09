@@ -17,7 +17,7 @@ const Header: React.FC = () => {
             <Link to="/">LOGO</Link>
           </Typography>
           <Button color="inherit">
-            <Link to="/#">新規登録</Link>
+            <Link to="/sign_up">新規登録</Link>
           </Button>
           <Button color="inherit">
             <Link to="/#">ログイン</Link>
