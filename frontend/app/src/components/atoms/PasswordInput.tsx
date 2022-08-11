@@ -15,7 +15,11 @@ type State = {
   showPassword: boolean;
 };
 
-const PasswordInput: React.FC = () => {
+type Prop = {
+  handleChangePassword: (password: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const PasswordInput: React.FC<Prop> = ({ handleChangePassword }) => {
   const [values, setValues] = React.useState<State>({
     amount: "",
     password: "",
@@ -25,8 +29,9 @@ const PasswordInput: React.FC = () => {
   });
 
   const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [prop]: event.target.value });
+    (prop: keyof State) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setValues({ ...values, [prop]: e.target.value });
+      handleChangePassword(e);
     };
 
   const handleClickShowPassword = () => {

@@ -5,15 +5,27 @@ import Button from "@mui/material/Button";
 type Prop = {
   text: string;
   color: string;
+  handleClickButton: (
+    value: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
 };
 
-const PrimaryButton: React.FC<Prop> = ({ text, color }) => {
+const PrimaryButton: React.FC<Prop> = ({ text, color, handleClickButton }) => {
   return (
     <Stack spacing={2} direction="row">
       <Button
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+          handleClickButton(e)
+        }
         variant="contained"
         size="large"
-        sx={{ mt: 1, mb: 1, width: 1, bgcolor: color }}
+        sx={{
+          mt: 1,
+          mb: 1,
+          width: 1,
+          bgcolor: color,
+          "&:hover": { backgroundColor: color },
+        }}
       >
         {text}
       </Button>

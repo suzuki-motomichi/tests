@@ -4,9 +4,10 @@ import TextField from "@mui/material/TextField";
 
 type Prop = {
   label: string;
+  handleChangeText: (text: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Input: React.FC<Prop> = ({ label }) => {
+const Input: React.FC<Prop> = ({ label, handleChangeText }) => {
   return (
     <Box
       component="form"
@@ -16,7 +17,14 @@ const Input: React.FC<Prop> = ({ label }) => {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label={label} variant="outlined" />
+      <TextField
+        id={label}
+        label={label}
+        variant="outlined"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          handleChangeText(e)
+        }
+      />
     </Box>
   );
 };

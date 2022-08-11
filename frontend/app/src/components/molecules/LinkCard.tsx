@@ -15,7 +15,9 @@ const LinkCard: React.FC<Children> = ({ children, link }) => {
       <BasicCard>
         <Box sx={style}>
           {children}
-          <KeyboardArrowRightIcon />
+          <Box sx={{ pl: 1 }}>
+            <KeyboardArrowRightIcon />
+          </Box>
         </Box>
       </BasicCard>
     </Link>
@@ -25,6 +27,7 @@ const LinkCard: React.FC<Children> = ({ children, link }) => {
 const style = {
   display: "flex",
   justifyContent: "space-between",
+  alignItems: "center",
   p: 1,
 };
 
