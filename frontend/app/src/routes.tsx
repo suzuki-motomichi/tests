@@ -13,7 +13,7 @@ export const routes: RouteObject[] = [
         element: <Home />,
       },
       {
-        path: "sign_up",
+        path: "sign-up",
         element: <SignUp />,
       },
     ],

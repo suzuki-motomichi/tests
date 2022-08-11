@@ -1,20 +1,22 @@
 import React from "react";
-// import { css } from "@emotion/react";
 import Input from "../atoms/Input";
 import PasswordInput from "../atoms/PasswordInput";
 import PrimaryButton from "../atoms/PrimaryButton";
 import { Box, Container } from "@mui/system";
 import CheckboxForm from "../atoms/CheckboxForm";
+import Or from "../atoms/Or";
+import { CardContent } from "@mui/material";
+import BasicCard from "../atoms/BasicCard";
 
 const SignUpForm: React.FC = () => {
   return (
     <>
       <Container maxWidth="sm" sx={{ textAlign: "center" }}>
-        <Box sx={{ mt: 8 }}>
+        <Box sx={{ mt: 8, mb: 5 }}>
           <h2>アカウント新規登録</h2>
         </Box>
-        <Box sx={backgroundStyle}>
-          <Container sx={{ width: "95%" }}>
+        <BasicCard>
+          <CardContent sx={cardContentStyle}>
             <Input label={"名前"} />
             <Input label={"メールアドレス"} />
             <PasswordInput />
@@ -22,36 +24,19 @@ const SignUpForm: React.FC = () => {
               <CheckboxForm label={"利用規約に同意する"} />
             </Box>
             <PrimaryButton text={"登録"} color={"#00B5EE"} />
-            <Box sx={orStyle}>または</Box>
+            <Or />
             <PrimaryButton text={"LINEで登録"} color={"#03D230"} />
-          </Container>
-        </Box>
+          </CardContent>
+        </BasicCard>
       </Container>
     </>
   );
 };
 
-const backgroundStyle = {
-  bgcolor: "#fff",
-  alignItems: "center",
-  pt: 5,
-  pb: 5,
-};
-
-const orStyle = {
+const cardContentStyle = {
+  gap: 2,
   display: "flex",
-  alignItems: "center",
-  "&::before, &::after": {
-    borderTop: "solid 1px",
-    content: '""',
-    flexGrow: 1,
-  },
-  "&::before": {
-    mr: 1,
-  },
-  "&::after": {
-    ml: 1,
-  },
+  flexDirection: "column",
 };
 
 export default SignUpForm;
