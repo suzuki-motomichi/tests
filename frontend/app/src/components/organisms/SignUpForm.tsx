@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../atoms/Input";
 import PasswordInput from "../atoms/PasswordInput";
 import PrimaryButton from "../atoms/PrimaryButton";
-import { Box, Container } from "@mui/system";
+import { Box } from "@mui/system";
 import CheckboxForm from "../atoms/CheckboxForm";
 import Or from "../atoms/Or";
 import { CardContent } from "@mui/material";
@@ -11,7 +11,7 @@ import BasicCard from "../atoms/BasicCard";
 const SignUpForm: React.FC = () => {
   return (
     <>
-      <Container maxWidth="sm" sx={{ textAlign: "center" }}>
+      <Box sx={{ textAlign: "center", m: 0 }}>
         <Box sx={{ mt: 8, mb: 5 }}>
           <h2>アカウント新規登録</h2>
         </Box>
@@ -28,7 +28,7 @@ const SignUpForm: React.FC = () => {
             <PrimaryButton text={"LINEで登録"} color={"#03D230"} />
           </CardContent>
         </BasicCard>
-      </Container>
+      </Box>
     </>
   );
 };
