@@ -52,6 +52,7 @@ const PasswordInput: React.FC<Prop> = ({ handleChangePassword }) => {
       <InputLabel htmlFor="outlined-adornment-password">パスワード</InputLabel>
       <OutlinedInput
         id="outlined-adornment-password"
+        name="password"
         type={values.showPassword ? "text" : "password"}
         value={values.password}
         onChange={handleChange("password")}

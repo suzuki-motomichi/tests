@@ -7,47 +7,36 @@ import CheckboxForm from "../atoms/CheckboxForm";
 import Or from "../atoms/Or";
 import { CardContent } from "@mui/material";
 import BasicCard from "../atoms/BasicCard";
-import { useCallback, useState } from "react";
+
+type State = {
+  name: string;
+  mail: string;
+  password: string;
+  isAgreement: boolean;
+};
 
 const SignUpForm: React.FC = () => {
-  const [name, setName] = useState("");
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isAgreement, setIsAgreement] = useState(false);
+  const [values, setValues] = React.useState<State>({
+    name: "",
+    mail: "",
+    password: "",
+    isAgreement: false,
+  });
 
-  const handleChangeName = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setName(e.target.value);
-    },
-    [setName]
-  );
+  const handleStateInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
 
-  const handleChangeMail = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setMail(e.target.value);
-    },
-    [setMail]
-  );
-
-  const handleChangePassword = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setPassword(e.target.value);
-    },
-    [setPassword]
-  );
-
-  const handleChangeAgreement = useCallback(
-    (e: React.SyntheticEvent<Element, Event>, checked: boolean) => {
-      setIsAgreement(checked);
-    },
-    [setIsAgreement]
-  );
+  const handleStateIsAgreementChange = (
+    e: React.SyntheticEvent<Element, Event>,
+    checked: boolean
+  ) => {
+    setValues({ ...values, isAgreement: checked });
+  };
 
   const handleClickButton = () => {
-    console.log({ name });
-    console.log({ mail });
-    console.log({ password });
-    console.log({ isAgreement });
+    // console.log({ values });
   };
 
   return (
@@ -58,14 +47,22 @@ const SignUpForm: React.FC = () => {
         </Box>
         <BasicCard>
           <CardContent sx={cardContentStyle}>
-            <Input label={"名前"} handleChangeText={handleChangeName} />
-            <Input label={"メールアドレス"} handleChangeText={handleChangeMail} />
-            <PasswordInput handleChangePassword={handleChangePassword} />
+            <Input
+              name={"name"}
+              label={"名前"}
+              handleChangeText={handleStateInputChange}
+            />
+            <Input
+              name={"mail"}
+              label={"メールアドレス"}
+              handleChangeText={handleStateInputChange}
+            />
+            <PasswordInput handleChangePassword={handleStateInputChange} />
             <Box sx={{ textAlign: "left" }}>
               <CheckboxForm
                 label={"利用規約に同意する"}
-                handleChangeCheck={handleChangeAgreement}
-                checked={isAgreement}
+                handleChangeCheck={handleStateIsAgreementChange}
+                checked={values.isAgreement}
               />
             </Box>
             <PrimaryButton

@@ -3,11 +3,13 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 type Prop = {
+  name: string;
   label: string;
   handleChangeText: (text: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Input: React.FC<Prop> = ({ label, handleChangeText }) => {
+const Input: React.FC<Prop> = ({ name, label, handleChangeText }) => {
+  const [values, setValues] = React.useState("");
   return (
     <Box
       component="form"
@@ -19,11 +21,14 @@ const Input: React.FC<Prop> = ({ label, handleChangeText }) => {
     >
       <TextField
         id={label}
+        name={name}
         label={label}
         variant="outlined"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          handleChangeText(e)
-        }
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          setValues(e.target.value);
+          handleChangeText(e);
+        }}
+        value={values}
       />
     </Box>
   );
