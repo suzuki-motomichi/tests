@@ -53,22 +53,18 @@ const BottomDrawerMenu: React.FC<Prop> = ({ isShow, handleClickButton }) => {
   );
 
   return (
-    <div>
-      <React.Fragment key={"bottom"}>
-        <Drawer anchor={"bottom"} open={isShow} onClose={closeDrawer}>
-          <Box sx={closeIconStyle}>
-            <IconButton
-              onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-                handleClickButton(e)
-              }
-            >
-              <CloseIcon />
-            </IconButton>
-          </Box>
-          {list()}
-        </Drawer>
-      </React.Fragment>
-    </div>
+    <Drawer anchor={"bottom"} open={isShow} onClose={closeDrawer}>
+      <Box sx={closeIconStyle}>
+        <IconButton
+          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+            handleClickButton(e)
+          }
+        >
+          <CloseIcon />
+        </IconButton>
+      </Box>
+      {list()}
+    </Drawer>
   );
 };
 
