@@ -55,11 +55,7 @@ const BottomDrawerMenu: React.FC<Prop> = ({ isShow, handleClickButton }) => {
   return (
     <Drawer anchor={"bottom"} open={isShow} onClose={closeDrawer}>
       <Box sx={closeIconStyle}>
-        <IconButton
-          onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-            handleClickButton(e)
-          }
-        >
+        <IconButton onClick={closeDrawer}>
           <CloseIcon />
         </IconButton>
       </Box>
