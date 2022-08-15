@@ -7,6 +7,7 @@ import CheckboxForm from "../atoms/CheckboxForm";
 import Or from "../atoms/Or";
 import { CardContent } from "@mui/material";
 import BasicCard from "../atoms/BasicCard";
+import { theme } from "../../style/theme";
 
 type State = {
   name: string;
@@ -68,13 +69,15 @@ const SignUpForm: React.FC = () => {
             <PrimaryButton
               handleClickButton={handleClickButton}
               text={"登録"}
-              color={"#00B5EE"}
+              color={theme.palette.primary.main}
+              textColor={theme.palette.textSecondary.main}
             />
             <Or />
             <PrimaryButton
               handleClickButton={handleClickButton}
               text={"LINEで登録"}
-              color={"#03D230"}
+              color={theme.palette.line.main}
+              textColor={theme.palette.textSecondary.main}
             />
           </CardContent>
         </BasicCard>

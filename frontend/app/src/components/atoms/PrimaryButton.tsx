@@ -5,12 +5,18 @@ import Button from "@mui/material/Button";
 type Prop = {
   text: string;
   color: string;
+  textColor: string;
   handleClickButton: (
     value: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
 };
 
-const PrimaryButton: React.FC<Prop> = ({ text, color, handleClickButton }) => {
+const PrimaryButton: React.FC<Prop> = ({
+  text,
+  color,
+  textColor,
+  handleClickButton,
+}) => {
   return (
     <Stack spacing={2} direction="row">
       <Button
@@ -25,6 +31,7 @@ const PrimaryButton: React.FC<Prop> = ({ text, color, handleClickButton }) => {
           width: 1,
           bgcolor: color,
           "&:hover": { backgroundColor: color },
+          color: textColor,
         }}
       >
         {text}
