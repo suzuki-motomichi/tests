@@ -8,8 +8,11 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { theme } from "../../style/theme";
+import BottomDrawerMenu from "./BottomDrawerMenu";
 
 const Header: React.FC = () => {
+  const [isShow, setIsShow] = React.useState(false);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -33,9 +36,14 @@ const Header: React.FC = () => {
             color="inherit"
             aria-label="menu"
             sx={{ ml: 2 }}
+            onClick={() => setIsShow(true)}
           >
             <MenuIcon />
           </IconButton>
+          <BottomDrawerMenu
+            handleClickButton={() => setIsShow(false)}
+            isShow={isShow}
+          />
         </Toolbar>
       </AppBar>
     </Box>
