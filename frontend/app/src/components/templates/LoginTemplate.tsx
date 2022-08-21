@@ -8,7 +8,7 @@ const LoginTemplate: React.FC = () => {
     <>
       <Container maxWidth="sm">
         <LoginForm />
-        <Box sx={{ mt: 5, mb: 3 }}>
+        <Box sx={{ mt: 3, mb: 3 }}>
           <LinkCard link={"/sign-up"}>アカウントをお持ちでない方</LinkCard>
         </Box>
       </Container>
