@@ -53,7 +53,7 @@ const LoginForm: React.FC = () => {
             />
             <Link to="#">パスワードをお忘れの方</Link>
             <Or />
-            <p style={{color: "red"}}>\ワンタッチでログイン/</p>
+            <Box sx={warningText}>\ワンタッチでログイン/</Box>
             <PrimaryButton
               handleClickButton={handleClickButton}
               text={"LINEでログイン"}
@@ -71,6 +71,9 @@ const cardContentStyle = {
   gap: 2,
   display: "flex",
   flexDirection: "column",
+};
+const warningText = {
+  color: "warningText.main",
 };
 
 export default LoginForm;

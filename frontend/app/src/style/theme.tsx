@@ -9,7 +9,7 @@ declare module "@mui/material/styles/createPalette" {
     warningBackground: {
       main: string;
     };
-    primaryTex: {
+    primaryText: {
       main: string;
     };
     overlay: {
@@ -24,6 +24,9 @@ declare module "@mui/material/styles/createPalette" {
     textSecondary: {
       main: string;
     };
+    warningText: {
+      main: string;
+    }
   }
   interface PaletteOptions {
     dangerBackground?: PaletteColorOptions;
@@ -33,6 +36,7 @@ declare module "@mui/material/styles/createPalette" {
     line?: PaletteColorOptions;
     disabled?: PaletteColorOptions;
     textSecondary?: PaletteColorOptions;
+    warningText?: PaletteColorOptions;
   }
 }
 
@@ -78,5 +82,8 @@ export const theme = createTheme({
     background: {
       default: "#f6f7f7",
     },
+    warningText: {
+      main: "#ff5252",
+    }
   },
 });
