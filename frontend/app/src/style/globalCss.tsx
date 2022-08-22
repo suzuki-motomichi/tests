@@ -4,7 +4,7 @@ import { theme } from "./theme";
 export const style = css`
   html,
   body {
-    margin-top: 50px;
+    margin-top: 65px;
   }
   img {
     max-width: 100%;
