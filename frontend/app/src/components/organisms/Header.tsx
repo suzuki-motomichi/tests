@@ -28,7 +28,7 @@ const Header: React.FC = () => {
             <Link to="/sign-up">新規登録</Link>
           </Button>
           <Button color="inherit">
-            <Link to="/#">ログイン</Link>
+            <Link to="/login">ログイン</Link>
           </Button>
           <IconButton
             size="large"
