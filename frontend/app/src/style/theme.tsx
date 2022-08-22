@@ -83,7 +83,7 @@ export const theme = createTheme({
       default: "#f6f7f7",
     },
     warningText: {
-      main: "#ff5252",
+      main: "#ff5757",
     }
   },
 });
