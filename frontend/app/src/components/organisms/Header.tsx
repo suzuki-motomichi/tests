@@ -10,12 +10,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { theme } from "../../style/theme";
 import ScrollabelTabs from "../molecules/ScrollabelTabs";
 import { useLocation } from "react-router-dom";
+import BottomDrawerMenu from "./BottomDrawerMenu";
 
 type RouteParams = {
   circleIndex: number;
 };
 
 const Header: React.FC = () => {
+  const [isShow, setIsShow] = React.useState(false);
   const [value, setValue] = React.useState(0);
   const location = useLocation();
   const params = location.state as RouteParams;
@@ -49,7 +51,7 @@ const Header: React.FC = () => {
             <Link to="/sign-up">新規登録</Link>
           </Button>
           <Button color="inherit">
-            <Link to="/#">ログイン</Link>
+            <Link to="/login">ログイン</Link>
           </Button>
           <IconButton
             size="large"
@@ -57,9 +59,14 @@ const Header: React.FC = () => {
             color="inherit"
             aria-label="menu"
             sx={{ ml: 2 }}
+            onClick={() => setIsShow(true)}
           >
             <MenuIcon />
           </IconButton>
+          <BottomDrawerMenu
+            handleClickButton={() => setIsShow(false)}
+            isShow={isShow}
+          />
         </Toolbar>
         {selectCircle()}
       </AppBar>

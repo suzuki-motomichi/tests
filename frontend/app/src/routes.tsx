@@ -3,6 +3,7 @@ import Default from "./components/pages/Default";
 import Home from "./components/pages/Home";
 import SignUp from "./components/pages/SignUp";
 import Circle from "./components/pages/Circle";
+import Login from "./components/pages/Login";
 
 export const routes: RouteObject[] = [
   {
@@ -20,6 +21,10 @@ export const routes: RouteObject[] = [
       {
         path: "circle/:id",
         element: <Circle />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
     ],
   },
