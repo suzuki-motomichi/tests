@@ -1,5 +1,5 @@
-import React, { useLayoutEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useLayoutEffect, useCallback } from "react";
+import { Link, useParams } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,32 +9,47 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { theme } from "../../style/theme";
 import ScrollabelTabs from "../molecules/ScrollabelTabs";
-import { useLocation } from "react-router-dom";
 import BottomDrawerMenu from "./BottomDrawerMenu";
 
-type RouteParams = {
-  circleIndex: number;
+type CircleArray = {
+  uuid: string;
+  name: string;
 };
 
 const Header: React.FC = () => {
   const [isShow, setIsShow] = React.useState(false);
   const [value, setValue] = React.useState(0);
-  const location = useLocation();
-  const params = location.state as RouteParams;
+  const params = useParams();
+  const uuid = params.uuid;
+
+  const load = useCallback(() => {
+    // TODO: uuidが違う場合indexは-1になる。404ページへ。
+    return circleArray.findIndex((circle) => circle.uuid === uuid);
+  }, []);
 
   useLayoutEffect(() => {
-    if (params?.circleIndex === undefined) {
+    if (!uuid) {
       return;
     }
-    setValue(params?.circleIndex);
-  }, [params]);
+    const circleArrayIndex = load();
+
+    setValue(circleArrayIndex);
+  }, [setValue, load]);
 
   const selectCircle = () => {
-    if (params?.circleIndex === undefined) {
-      return;
-    }
-    return <ScrollabelTabs index={value} />;
+    return (
+      <ScrollabelTabs url={"/circle/"} index={value} array={circleArray} />
+    );
   };
+
+  // TODO: JsonServerから取得するようにする
+  const circleArray: CircleArray[] = [
+    { uuid: "a026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル1" },
+    { uuid: "b026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル2" },
+    { uuid: "c026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル3" },
+    { uuid: "d026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル4" },
+    { uuid: "e026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル5" },
+  ];
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -68,7 +83,7 @@ const Header: React.FC = () => {
             isShow={isShow}
           />
         </Toolbar>
-        {selectCircle()}
+        {uuid ? selectCircle() : ""}
       </AppBar>
     </Box>
   );

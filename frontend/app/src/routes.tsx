@@ -19,7 +19,7 @@ export const routes: RouteObject[] = [
         element: <SignUp />,
       },
       {
-        path: "circle/:id",
+        path: "circle/:uuid",
         element: <Circle />,
       },
       {

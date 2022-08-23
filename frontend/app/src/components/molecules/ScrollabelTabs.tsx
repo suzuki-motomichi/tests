@@ -4,16 +4,25 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 
+type Obj =
+  | {
+      id: number;
+      uuid?: string;
+      name: string;
+    }
+  | {
+      id?: number;
+      uuid: string;
+      name: string;
+    };
+
 type Prop = {
+  url: string;
   index: number;
+  array: Obj[];
 };
 
-type CircleArray = {
-  uuid: string;
-  name: string;
-};
-
-const ScrollabelTabs: React.FC<Prop> = ({ index }) => {
+const ScrollabelTabs: React.FC<Prop> = ({ url, index, array }) => {
   const [value, setValue] = React.useState(index);
   const navigate = useNavigate();
 
@@ -25,15 +34,6 @@ const ScrollabelTabs: React.FC<Prop> = ({ index }) => {
     setValue(newValue);
   };
 
-  // TODO: JsonServerから取得するようにする
-  const circleArray: CircleArray[] = [
-    { uuid: "a026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル1" },
-    { uuid: "b026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル2" },
-    { uuid: "c026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル3" },
-    { uuid: "d026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル4" },
-    { uuid: "e026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル5" },
-  ];
-
   return (
     <Box sx={{ bgcolor: "background.paper" }}>
       <Tabs
@@ -42,18 +42,24 @@ const ScrollabelTabs: React.FC<Prop> = ({ index }) => {
         variant="scrollable"
         scrollButtons={false}
       >
-        {circleArray.map((circle, i) => {
-          return (
-            <Tab
-              label={circle.name}
-              key={circle.uuid}
-              onClick={() =>
-                navigate("/circle/" + circle.uuid, {
-                  state: { circleIndex: i, circleName: circle.name },
-                })
-              }
-            />
-          );
+        {array.map((array) => {
+          if (array.id) {
+            return (
+              <Tab
+                label={array.name}
+                key={array.id}
+                onClick={() => navigate(url + array.id)}
+              />
+            );
+          } else {
+            return (
+              <Tab
+                label={array.name}
+                key={array.uuid}
+                onClick={() => navigate(url + array.uuid)}
+              />
+            );
+          }
         })}
       </Tabs>
     </Box>
