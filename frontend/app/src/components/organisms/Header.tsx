@@ -1,5 +1,5 @@
-import React, { useLayoutEffect, useCallback } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useLayoutEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -21,24 +21,30 @@ const Header: React.FC = () => {
   const [value, setValue] = React.useState(0);
   const params = useParams();
   const uuid = params.uuid;
+  const navigate = useNavigate();
 
-  const load = useCallback(() => {
+  const circleArrayIndex = () => {
     // TODO: uuidが違う場合indexは-1になる。404ページへ。
     return circleArray.findIndex((circle) => circle.uuid === uuid);
-  }, []);
+  };
 
   useLayoutEffect(() => {
     if (!uuid) {
       return;
     }
-    const circleArrayIndex = load();
-
-    setValue(circleArrayIndex);
-  }, [setValue, load]);
+    const index = circleArrayIndex();
+    setValue(index);
+  }, [setValue, circleArrayIndex]);
 
   const selectCircle = () => {
     return (
-      <ScrollabelTabs url={"/circle/"} index={value} array={circleArray} />
+      <ScrollabelTabs
+        index={value}
+        array={circleArray}
+        handleClickTab={(array: CircleArray) =>
+          navigate("/circle/" + array.uuid)
+        }
+      />
     );
   };
 
