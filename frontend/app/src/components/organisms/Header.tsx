@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useCallback, useMemo } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -23,16 +23,28 @@ const Header: React.FC = () => {
   const uuid = params.uuid;
   const navigate = useNavigate();
 
-  const circleArrayIndex = () => {
+  // TODO: JsonServerから取得するようにする
+  const circleArray: CircleArray[] = useMemo(
+    () => [
+      { uuid: "a026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル1" },
+      { uuid: "b026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル2" },
+      { uuid: "c026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル3" },
+      { uuid: "d026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル4" },
+      { uuid: "e026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル5" },
+    ],
+    []
+  );
+
+  const circleArrayIndex = useCallback(() => {
     // TODO: uuidが違う場合indexは-1になる。404ページへ。
     return circleArray.findIndex((circle) => circle.uuid === uuid);
-  };
+  }, [circleArray, uuid]);
 
   useLayoutEffect(() => {
     if (!uuid) return;
     const index = circleArrayIndex();
     setValue(index);
-  }, [setValue, circleArrayIndex]);
+  }, [setValue, uuid, circleArrayIndex]);
 
   const selectCircle = () => {
     return (
@@ -45,15 +57,6 @@ const Header: React.FC = () => {
       />
     );
   };
-
-  // TODO: JsonServerから取得するようにする
-  const circleArray: CircleArray[] = [
-    { uuid: "a026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル1" },
-    { uuid: "b026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル2" },
-    { uuid: "c026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル3" },
-    { uuid: "d026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル4" },
-    { uuid: "e026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル5" },
-  ];
 
   return (
     <Box sx={{ flexGrow: 1 }}>
