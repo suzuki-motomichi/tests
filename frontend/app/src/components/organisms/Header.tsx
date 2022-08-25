@@ -29,9 +29,7 @@ const Header: React.FC = () => {
   };
 
   useLayoutEffect(() => {
-    if (!uuid) {
-      return;
-    }
+    if (!uuid) return;
     const index = circleArrayIndex();
     setValue(index);
   }, [setValue, circleArrayIndex]);
