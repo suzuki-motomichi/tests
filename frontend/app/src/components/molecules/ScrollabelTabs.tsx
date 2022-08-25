@@ -3,22 +3,16 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-type Obj =
-  | {
-      id: number;
-      uuid?: string;
-      name: string;
-    }
-  | {
-      id?: number;
-      uuid: string;
-      name: string;
-    };
+type Obj = RequireOne<{
+  name: string;
+  id?: number;
+  uuid?: string;
+}>;
 
 type Prop = {
   index: number;
   array: Obj[];
-  handleClickTab: (array: any) => void;
+  handleClickTab: (array: Obj) => void;
 };
 
 const ScrollabelTabs: React.FC<Prop> = ({ index, array, handleClickTab }) => {
@@ -40,13 +34,9 @@ const ScrollabelTabs: React.FC<Prop> = ({ index, array, handleClickTab }) => {
         variant="scrollable"
         scrollButtons={false}
       >
-        {array.map((array, i) => {
+        {array.map((obj, i) => {
           return (
-            <Tab
-              label={array.name}
-              key={i}
-              onClick={() => handleClickTab(array)}
-            />
+            <Tab label={obj.name} key={i} onClick={() => handleClickTab(obj)} />
           );
         })}
       </Tabs>

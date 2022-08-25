@@ -11,6 +11,12 @@ import { theme } from "../../style/theme";
 import ScrollabelTabs from "../molecules/ScrollabelTabs";
 import BottomDrawerMenu from "./BottomDrawerMenu";
 
+type Obj = RequireOne<{
+  name: string;
+  id?: number;
+  uuid?: string;
+}>;
+
 type CircleArray = {
   uuid: string;
   name: string;
@@ -51,9 +57,7 @@ const Header: React.FC = () => {
       <ScrollabelTabs
         index={value}
         array={circleArray}
-        handleClickTab={(array: CircleArray) =>
-          navigate("/circle/" + array.uuid)
-        }
+        handleClickTab={(obj: Obj) => navigate("/circle/" + obj.uuid)}
       />
     );
   };
