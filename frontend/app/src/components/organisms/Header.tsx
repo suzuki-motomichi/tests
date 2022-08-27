@@ -10,17 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { theme } from "../../style/theme";
 import ScrollabelTabs from "../molecules/ScrollabelTabs";
 import BottomDrawerMenu from "./BottomDrawerMenu";
-
-type Obj = RequireOne<{
-  name: string;
-  id?: number;
-  uuid?: string;
-}>;
-
-type CircleArray = {
-  uuid: string;
-  name: string;
-};
+import { ScrollTab } from "../../lib/types/componentsTypes";
 
 const Header: React.FC = () => {
   const [isShow, setIsShow] = React.useState(false);
@@ -30,7 +20,7 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
 
   // TODO: JsonServerから取得するようにする
-  const circleArray: CircleArray[] = useMemo(
+  const circleArray: ScrollTab[] = useMemo(
     () => [
       { uuid: "a026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル1" },
       { uuid: "b026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル2" },
@@ -57,7 +47,7 @@ const Header: React.FC = () => {
       <ScrollabelTabs
         index={value}
         array={circleArray}
-        handleClickTab={(obj: Obj) => navigate("/circle/" + obj.uuid)}
+        handleClickTab={(obj: ScrollTab) => navigate("/circle/" + obj.uuid)}
       />
     );
   };

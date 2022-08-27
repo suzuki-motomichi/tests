@@ -2,17 +2,12 @@ import React, { useLayoutEffect } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-
-type Obj = RequireOne<{
-  name: string;
-  id?: number;
-  uuid?: string;
-}>;
+import { ScrollTab } from "../../lib/types/componentsTypes";
 
 type Prop = {
   index: number;
-  array: Obj[];
-  handleClickTab: (array: Obj) => void;
+  array: ScrollTab[];
+  handleClickTab: (array: ScrollTab) => void;
 };
 
 const ScrollabelTabs: React.FC<Prop> = ({ index, array, handleClickTab }) => {
