@@ -15,5 +15,47 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "circles": [
+    {
+      "id": "1",
+      "user_id": "1",
+      "circles_uuid": "a026055c-d09e-eb71-f84d-484a75803a3f",
+      "circles_name": "ガチマネサークル1",
+      "circles_introduction": "ガチマネサークル１の説明です。",
+      "circles_image": ""
+    },
+    {
+      "id": "2",
+      "user_id": "1",
+      "circles_uuid": "b026055c-d09e-eb71-f84d-484a75803a3f",
+      "circles_name": "ガチマネサークル2",
+      "circles_introduction": "ガチマネサークル2の説明です。",
+      "circles_image": ""
+    },
+    {
+      "id": "3",
+      "user_id": "1",
+      "circles_uuid": "c026055c-d09e-eb71-f84d-484a75803a3f",
+      "circles_name": "ガチマネサークル3",
+      "circles_introduction": "ガチマネサークル3の説明です。",
+      "circles_image": ""
+    },
+    {
+      "id": "4",
+      "user_id": "1",
+      "circles_uuid": "d026055c-d09e-eb71-f84d-484a75803a3f",
+      "circles_name": "ガチマネサークル4",
+      "circles_introduction": "ガチマネサークル4の説明です。",
+      "circles_image": ""
+    },
+    {
+      "id": "5",
+      "user_id": "1",
+      "circles_uuid": "e026055c-d09e-eb71-f84d-484a75803a3f",
+      "circles_name": "ガチマネサークル5",
+      "circles_introduction": "ガチマネサークル5の説明です。",
+      "circles_image": ""
+    }
+  ]
 }
