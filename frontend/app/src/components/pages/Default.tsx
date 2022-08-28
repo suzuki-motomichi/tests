@@ -13,7 +13,14 @@ const Default: React.FC = () => {
     ScrollTab[]
   >([]);
 
-  const circleArrayFunc = useCallback((circles: Circle[]) => {
+  /**
+   * nameとuuidのオブジェクトに成形して setScrollTabCircleArray に入れる
+   * [
+   *  {name: "サークル1", uuid: "a026055c-d09e-eb71-f84d-484a75803a3f"},
+   *  {name: "サークル2", uuid: "b026055c-d09e-eb71-f84d-484a75803a3f"},
+   * ]
+   */
+  const convertCircleArray = useCallback((circles: Circle[]) => {
     setScrollTabCircleArray(
       circles.map((circle) => ({
         name: circle.circles_name,
@@ -26,11 +33,10 @@ const Default: React.FC = () => {
     if (!uuid) return;
     axios.get("http://localhost:4001/circles").then((res) => {
       const circles = res.data;
-      console.log({ circles });
       const scrollTabCircles: Circle[] = circles.concat();
-      circleArrayFunc(scrollTabCircles);
+      convertCircleArray(scrollTabCircles);
     });
-  }, [uuid, circleArrayFunc]);
+  }, [uuid, convertCircleArray]);
 
   return (
     <>

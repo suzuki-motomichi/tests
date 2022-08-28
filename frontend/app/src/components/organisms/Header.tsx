@@ -17,27 +17,27 @@ type Prop = {
 };
 
 const Header: React.FC<Prop> = ({ scrollTabCircleArray }) => {
-  const [isShow, setIsShow] = React.useState(false);
-  const [value, setValue] = React.useState(0);
+  const [isShow, setIsShow] = React.useState<boolean>(false);
+  const [index, setIndex] = React.useState<number>(0);
   const params = useParams();
   const uuid = params.uuid;
   const navigate = useNavigate();
 
-  const circleArrayIndex = useCallback(() => {
+  const getCircleArrayIndex = useCallback(() => {
     // TODO: uuidが違う場合indexは-1になる。404ページへ。
     return scrollTabCircleArray.findIndex((circle) => circle.uuid === uuid);
   }, [uuid, scrollTabCircleArray]);
 
   useLayoutEffect(() => {
     if (scrollTabCircleArray.length === 0) return;
-    const index = circleArrayIndex();
-    setValue(index);
-  }, [uuid, circleArrayIndex, scrollTabCircleArray]);
+    const index = getCircleArrayIndex();
+    setIndex(index);
+  }, [uuid, getCircleArrayIndex, scrollTabCircleArray]);
 
   const selectCircle = () => {
     return (
       <ScrollabelTabs
-        index={value}
+        index={index}
         array={scrollTabCircleArray}
         handleClickTab={(obj: ScrollTab) => navigate("/circle/" + obj.uuid)}
       />
