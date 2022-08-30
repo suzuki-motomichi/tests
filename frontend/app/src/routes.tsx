@@ -4,6 +4,7 @@ import Home from "./components/pages/Home";
 import SignUp from "./components/pages/SignUp";
 import Circle from "./components/pages/Circle";
 import Login from "./components/pages/Login";
+import Event from "./components/pages/CircleEvent";
 
 export const routes: RouteObject[] = [
   {
@@ -21,6 +22,10 @@ export const routes: RouteObject[] = [
       {
         path: "circle/:uuid",
         element: <Circle />,
+      },
+      {
+        path: "circle/:uuid/event",
+        element: <Event />,
       },
       {
         path: "login",
