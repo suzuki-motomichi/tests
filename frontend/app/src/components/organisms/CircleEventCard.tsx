@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import LinkCard from "../molecules/LinkCard";
 import Box from "@mui/material/Box";
@@ -6,7 +5,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import IconText from "../molecules/IconText";
 import PlaceIcon from "@mui/icons-material/Place";
 import PersonIcon from "@mui/icons-material/Person";
-import Text from "../atoms/Text";
+import ClampText from "../atoms/ClampText";
 
 type Prop = {
   id: number;
@@ -32,7 +31,7 @@ const CircleEventCard: React.FC<Prop> = ({
     <>
       <LinkCard link={`/circle/${uuid}/event/${id}`}>
         <Box sx={circleEventCardStyle}>
-          <Box>{events_title}</Box>
+          <Box sx={{ fontWeight: "bold" }}>{events_title}</Box>
 
           <Box>
             <IconText
@@ -50,7 +49,7 @@ const CircleEventCard: React.FC<Prop> = ({
           </Box>
 
           <Box>
-            <Text text={events_note_text} />
+            <ClampText text={events_note_text} lineClamp={2} />
           </Box>
         </Box>
       </LinkCard>
