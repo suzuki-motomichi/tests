@@ -57,5 +57,31 @@
       "circles_introduction": "ガチマネサークル5の説明です。",
       "circles_image": ""
     }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "circle_id": 1,
+      "sport_id": 1,
+      "events_title": "ガチマネイベント1",
+      "events_place": "お台場",
+      "events_day": "2022-08-30",
+      "events_time": "19:00",
+      "events_people_limit_num": 30,
+      "events_limit_answer_day": "2022-08-20",
+      "events_note_text": "初イベント1よろしく〜。初イベントよろしく〜。初イベントよろしく〜。初イベントよろしく〜。"
+    },
+    {
+      "id": 2,
+      "circle_id": 1,
+      "sport_id": 1,
+      "events_title": "ガチマネイベント2",
+      "events_place": "お台場",
+      "events_day": "2022-08-30",
+      "events_time": "19:00",
+      "events_people_limit_num": 30,
+      "events_limit_answer_day": "2022-08-20",
+      "events_note_text": "初イベント2よろしく〜。初イベントよろしく〜。初イベントよろしく〜。初イベントよろしく〜。"
+    }
   ]
 }
