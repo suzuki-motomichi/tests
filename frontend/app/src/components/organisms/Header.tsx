@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useCallback, useMemo } from "react";
+import React, { useLayoutEffect, useCallback } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,41 +12,33 @@ import ScrollabelTabs from "../molecules/ScrollabelTabs";
 import BottomDrawerMenu from "./BottomDrawerMenu";
 import { ScrollTab } from "../../lib/types/componentsTypes";
 
-const Header: React.FC = () => {
-  const [isShow, setIsShow] = React.useState(false);
-  const [value, setValue] = React.useState(0);
+type Prop = {
+  scrollTabCircleArray: ScrollTab[];
+};
+
+const Header: React.FC<Prop> = ({ scrollTabCircleArray }) => {
+  const [isShow, setIsShow] = React.useState<boolean>(false);
+  const [index, setIndex] = React.useState<number>(0);
   const params = useParams();
   const uuid = params.uuid;
   const navigate = useNavigate();
 
-  // TODO: JsonServerから取得するようにする
-  const circleArray: ScrollTab[] = useMemo(
-    () => [
-      { uuid: "a026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル1" },
-      { uuid: "b026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル2" },
-      { uuid: "c026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル3" },
-      { uuid: "d026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル4" },
-      { uuid: "e026055c-d09e-eb71-f84d-484a75803a3f", name: "サークル5" },
-    ],
-    []
-  );
-
-  const circleArrayIndex = useCallback(() => {
+  const getCircleArrayIndex = useCallback(() => {
     // TODO: uuidが違う場合indexは-1になる。404ページへ。
-    return circleArray.findIndex((circle) => circle.uuid === uuid);
-  }, [circleArray, uuid]);
+    return scrollTabCircleArray.findIndex((circle) => circle.uuid === uuid);
+  }, [uuid, scrollTabCircleArray]);
 
   useLayoutEffect(() => {
-    if (!uuid) return;
-    const index = circleArrayIndex();
-    setValue(index);
-  }, [setValue, uuid, circleArrayIndex]);
+    if (scrollTabCircleArray.length === 0) return;
+    const index = getCircleArrayIndex();
+    setIndex(index);
+  }, [uuid, getCircleArrayIndex, scrollTabCircleArray]);
 
   const selectCircle = () => {
     return (
       <ScrollabelTabs
-        index={value}
-        array={circleArray}
+        index={index}
+        array={scrollTabCircleArray}
         handleClickTab={(obj: ScrollTab) => navigate("/circle/" + obj.uuid)}
       />
     );
