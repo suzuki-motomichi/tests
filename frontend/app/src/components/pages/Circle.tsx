@@ -1,9 +1,9 @@
-import React from "react";
+import CircleTemplate from "../templates/CircleTemplate";
 
 const Circle: React.FC = () => {
   return (
     <>
-      <h1>ようこそ！</h1>
+      <CircleTemplate />
     </>
   );
 };

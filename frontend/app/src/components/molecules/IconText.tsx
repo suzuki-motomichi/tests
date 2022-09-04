@@ -21,7 +21,6 @@ const iconTextStyle = {
   display: "flex",
   alignItems: "center",
   gap: 1,
-  fontSize: 10,
 };
 
 export default IconText;

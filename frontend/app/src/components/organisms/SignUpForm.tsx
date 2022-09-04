@@ -70,6 +70,7 @@ const SignUpForm: React.FC = () => {
               handleClickButton={handleClickButton}
               text={"登録"}
               color={theme.palette.primary.main}
+              borderColor={theme.palette.primary.main}
               textColor={theme.palette.textSecondary.main}
             />
             <Or />
@@ -77,6 +78,7 @@ const SignUpForm: React.FC = () => {
               handleClickButton={handleClickButton}
               text={"LINEで登録"}
               color={theme.palette.line.main}
+              borderColor={theme.palette.line.main}
               textColor={theme.palette.textSecondary.main}
             />
           </CardContent>
