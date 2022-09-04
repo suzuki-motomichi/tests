@@ -6,6 +6,7 @@ import PrimaryButton from "../atoms/PrimaryButton";
 import Textarea from "../atoms/Textarea";
 
 const CircleRequest: React.FC = () => {
+  // TODO: APIから取得する
   const [request, setRequest] = useState<boolean>(false);
 
   // TODO: 定型文考える
@@ -21,7 +22,7 @@ const CircleRequest: React.FC = () => {
   };
 
   /**
-   * 自己紹介 入力
+   * サークル申請のテンプレート
    *
    * @returns
    */
@@ -50,7 +51,7 @@ const CircleRequest: React.FC = () => {
   };
 
   /**
-   * 自己紹介文 確認
+   * 承認待ちのテンプレート
    *
    * @returns
    */
