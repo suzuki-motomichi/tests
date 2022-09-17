@@ -58,7 +58,7 @@ const CircleRequest: React.FC = () => {
   const previewText = () => {
     return (
       <>
-        <Box sx={{ whiteSpace: "pre-line" }}>{text}</Box>
+        <Box sx={textPreviewStyle}>{text}</Box>
         <Box sx={buttonStyle}>
           <PrimaryButton
             text={"承認待ち"}
@@ -81,6 +81,12 @@ const CircleRequest: React.FC = () => {
       {request ? previewText() : textarea()}
     </Box>
   );
+};
+
+const textPreviewStyle = {
+  whiteSpace: "pre-line",
+  width: 1,
+  wordBreak: "break-all",
 };
 
 const circleStyle = {

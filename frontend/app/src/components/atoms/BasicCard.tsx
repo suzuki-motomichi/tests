@@ -3,26 +3,14 @@ import { ReactNode } from "react";
 
 type Children = {
   children: ReactNode;
-  padding?: number;
 };
 
-const BasicCard: React.FC<Children> = ({ children, padding }) => {
+const BasicCard: React.FC<Children> = ({ children }) => {
   return (
     <>
-      <Card
-        sx={{
-          p: padding,
-          height: "100%",
-        }}
-      >
-        {children}
-      </Card>
+      <Card sx={{ height: 1 }}>{children}</Card>
     </>
   );
-};
-
-BasicCard.defaultProps = {
-  padding: 2,
 };
 
 export default BasicCard;

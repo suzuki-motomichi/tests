@@ -73,6 +73,7 @@ const cardContentStyle = {
   gap: 2,
   display: "flex",
   flexDirection: "column",
+  m: 2,
 };
 const warningText = {
   color: "warningText.main",

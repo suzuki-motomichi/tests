@@ -10,11 +10,13 @@ type Prop = {
 const UserCount: React.FC<Prop> = ({ userCount }) => {
   return (
     <Box sx={{ height: 40 }}>
-      <BasicCard padding={1}>
-        <IconText
-          icon={<PersonIcon fontSize={"medium"} />}
-          text={userCount.toString()}
-        />
+      <BasicCard>
+        <Box sx={{ m: 1 }}>
+          <IconText
+            icon={<PersonIcon fontSize={"medium"} />}
+            text={userCount.toString()}
+          />
+        </Box>
       </BasicCard>
     </Box>
   );

@@ -29,6 +29,7 @@ const textStyle = {
   justifyContent: "space-between",
   alignItems: "center",
   p: 1,
+  m: 2,
 };
 
 const arrowStyle = {

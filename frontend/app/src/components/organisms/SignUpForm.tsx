@@ -92,6 +92,7 @@ const cardContentStyle = {
   gap: 2,
   display: "flex",
   flexDirection: "column",
+  m: 2,
 };
 
 export default SignUpForm;
