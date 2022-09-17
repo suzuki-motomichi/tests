@@ -7,15 +7,14 @@ import Textarea from "../atoms/Textarea";
 
 const CircleRequest: React.FC = () => {
   // TODO: APIから取得する
+  // サークルに申請を出していたらtrue
   const [request, setRequest] = useState<boolean>(false);
 
-  // TODO: 定型文考える
   const [text, setText] = useState<string>(
     "みなさんと仲良くなりたいです！よろしくお願いします！"
   );
 
   const handleClickButton = () => {
-    console.log(text);
     if (!text) return;
     // APIにpostしたら setRequest true
     setRequest(true);
