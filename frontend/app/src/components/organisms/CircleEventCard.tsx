@@ -33,7 +33,7 @@ const CircleEventCard: React.FC<Prop> = ({
         <Box sx={circleEventCardStyle}>
           <Box sx={{ fontWeight: "bold" }}>{events_title}</Box>
 
-          <Box>
+          <Box sx={{ fontSize: 10 }}>
             <IconText
               icon={<CalendarMonthIcon fontSize={"small"} />}
               text={events_time}

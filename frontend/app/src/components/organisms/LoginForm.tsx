@@ -48,6 +48,7 @@ const LoginForm: React.FC = () => {
             <PrimaryButton
               handleClickButton={handleClickButton}
               text={"登録"}
+              borderColor={theme.palette.primary.main}
               color={theme.palette.primary.main}
               textColor={theme.palette.textSecondary.main}
             />
@@ -58,6 +59,7 @@ const LoginForm: React.FC = () => {
               handleClickButton={handleClickButton}
               text={"LINEでログイン"}
               color={theme.palette.line.main}
+              borderColor={theme.palette.line.main}
               textColor={theme.palette.textSecondary.main}
             />
           </CardContent>
@@ -71,6 +73,7 @@ const cardContentStyle = {
   gap: 2,
   display: "flex",
   flexDirection: "column",
+  m: 2,
 };
 const warningText = {
   color: "warningText.main",

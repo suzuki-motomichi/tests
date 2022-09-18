@@ -1,4 +1,3 @@
-import React from "react";
 import Card from "@mui/material/Card";
 import { ReactNode } from "react";
 
@@ -9,7 +8,7 @@ type Children = {
 const BasicCard: React.FC<Children> = ({ children }) => {
   return (
     <>
-      <Card sx={{ p: 2 }}>{children}</Card>
+      <Card sx={{ height: 1 }}>{children}</Card>
     </>
   );
 };
